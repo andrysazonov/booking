@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useHttp } from "../../hooks/http.hook";
+import './authPage.css';
 
 export const AuthPage = () => {
   const auth = useContext(AuthContext);
@@ -26,25 +27,28 @@ export const AuthPage = () => {
 
   return (
     <div>
-      AuthPage
-      <input
-        placeholder="Введите Логин"
-        name="login"
-        type="email"
-        autoComplete="off"
-        onChange={changeHandler}
-      />
-      <label htmlFor="email">Логин</label>
-      <input
-        placeholder="Введите пароль"
-        name="password"
-        type="password"
-        onChange={changeHandler}
-      />
-      <label htmlFor="password">Пароль</label>
-      <button disabled={loading} onClick={loginHandler}>
-        Войти
-      </button>
+      <form>
+        <h1 className="authPageTitle">Войдите в свой аккаунт</h1>
+        <input
+          placeholder="Логин"
+          className="loginInput"
+          name="login"
+          type="email"
+          autoComplete="off"
+          onChange={changeHandler}
+        />
+        <input
+          placeholder="Пароль"
+          className="passwordInput"
+          name="password"
+          type="password"
+          onChange={changeHandler}
+        />
+        <button disabled={loading} onClick={loginHandler} className="sendButton">
+          Войти
+        </button>
+        <a className="forgetPassword" href="/">Забыли пароль?</a>
+      </form>
     </div>
   );
 };

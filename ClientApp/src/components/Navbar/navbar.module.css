@@ -1,15 +1,16 @@
-.navbar{
+.navbar {
     position: sticky;
-    width:100%;
-    padding:20px;
-    background-color: #5a189a;
+    width: 100%;
+    padding: 20px;
     display: flex;
     align-items: center;
 }
-.navlink{
-color: white;
+
+.navlink {
+    color: white;
 }
-.logo_container{
-width: 90px;
-height: 50px;
+
+.logo_container {
+    width: 90px;
+    height: 50px;
 }

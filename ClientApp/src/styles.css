@@ -1,3 +1,11 @@
-body{
+body {
     font-family: sans-serif;
+}
+
+.root {
+    width: auto;
+    height: auto;
+    background: url("img/backgroundHost.jpg");
+    background-size: cover;
+    overflow: hidden;
 }
