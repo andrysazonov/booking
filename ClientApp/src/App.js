@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import './styles.css';
 
 export const App = () => {
-  const routes = useRoutes(false);
+  const routes = useRoutes(true);
 
   return (
     <div className="root">

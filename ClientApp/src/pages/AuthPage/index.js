@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useHttp } from "../../hooks/http.hook";
-import './authPage.css';
+import styles from "./auth.module.css";
 
 export const AuthPage = () => {
   const auth = useContext(AuthContext);
@@ -18,7 +18,7 @@ export const AuthPage = () => {
 
   const loginHandler = async () => {
     try {
-      console.log("sdfds",form)
+      console.log("sdfds", form);
       const data = await request("/api/auth/login", "POST", { ...form });
       console.log("Data Auth", data);
       //   auth.login(data.token, data.userId, form.login);
@@ -26,29 +26,35 @@ export const AuthPage = () => {
   };
 
   return (
-    <div>
-      <form>
-        <h1 className="authPageTitle">Войдите в свой аккаунт</h1>
-        <input
-          placeholder="Логин"
-          className="loginInput"
-          name="login"
-          type="email"
-          autoComplete="off"
-          onChange={changeHandler}
-        />
-        <input
-          placeholder="Пароль"
-          className="passwordInput"
-          name="password"
-          type="password"
-          onChange={changeHandler}
-        />
-        <button disabled={loading} onClick={loginHandler} className="sendButton">
-          Войти
-        </button>
-        <a className="forgetPassword" href="/">Забыли пароль?</a>
-      </form>
+    <div className={styles.mainBlock}>
+      <div className={styles.authSide}>
+        <div className={styles.authCard}>
+          <h2>Авторизация</h2>
+          {/* <label htmlFor="email">Логин</label> */}
+
+          <input
+            className={styles.data}
+            placeholder="Введите Логин"
+            name="login"
+            type="email"
+            autoComplete="off"
+            onChange={changeHandler}
+          />
+          {/* <label htmlFor="password">Пароль</label> */}
+
+          <input
+            className={styles.data}
+            placeholder="Введите пароль"
+            name="password"
+            type="password"
+            onChange={changeHandler}
+          />
+          <button className={styles.enterButton}disabled={loading} onClick={loginHandler}>
+            Войти
+          </button>
+        </div>
+      </div>
+      <div className={styles.infoCard}></div>
     </div>
   );
 };
