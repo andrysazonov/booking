@@ -4,7 +4,7 @@ import { useRoutes } from "./routes";
 import { BrowserRouter as Router } from "react-router-dom";
 
 export const App = () => {
-  const routes = useRoutes(false);
+  const routes = useRoutes(true);
 
   return (
     <div>
