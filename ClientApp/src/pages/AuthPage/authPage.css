@@ -1,0 +1,75 @@
+form {
+    position: sticky;
+    margin: auto;
+    width: 580px;
+    height: 530px;
+    background-color: #fff;
+    box-shadow: 6px 0px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+}
+
+.authPageTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 44px;
+    color: rgba(0, 0, 0, 0.75);
+    position: relative;
+    padding: 69px 69px 50px 69px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.loginInput,
+.passwordInput {
+    width: 500px;
+    height: 56px;
+    display: block;
+    margin: 0 auto;
+    background: #EDF2F7;
+    opacity: 0.5;
+    border: 1px solid rgba(30, 95, 200, 0.5);
+    box-shadow: inset 2px 2px 6px rgba(30, 95, 200, 0.25);
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.loginInput {
+    margin-bottom: 30px;
+}
+
+.passwordInput {
+    margin-bottom: 50px;
+}
+
+.sendButton {
+    width: 500px;
+    height: 53px;
+    display: block;
+    background: #F2542D;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 auto 40px auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.forgetPassword {
+    width: 143px;
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.75);
+    margin: 0 auto;
+    text-decoration-line: underline;
+}

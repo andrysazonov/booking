@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     position: sticky;
     width:100%;
     padding:20px;
@@ -8,10 +8,12 @@
     box-sizing: border-box;
     box-shadow: 0 0.2rem 0.5rem 0 rgb(64 79 89 / 25%);
 }
-.navlink{
-color: white;
+
+.navlink {
+    color: white;
 }
-.logo_container{
-width: 90px;
-height: 50px;
+
+.logo_container {
+    width: 90px;
+    height: 50px;
 }
