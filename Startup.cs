@@ -36,8 +36,8 @@ namespace HostBooking
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
-                name: "DefaultApi",
-                pattern: "api/{controller}/{action}/{id?}");
+                    name: "DefaultApi",
+                    pattern: "api/{controller}/{action}/{id?}");
                 endpoints.MapFallbackToController("Index", "Home");
             });
         }
