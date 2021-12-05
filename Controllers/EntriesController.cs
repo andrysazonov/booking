@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace HostBooking.Controllers
 {
+    [Route("api/[controller]")]
     public class EntriesController : Controller
     {
         [HttpPut]
@@ -26,6 +27,32 @@ namespace HostBooking.Controllers
         public IActionResult DeleteEntry() // на вход хз что
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult SearchTableInfo() // на вход хз что
+        {
+            var res = new List<string>();
+            try
+            {
+                using (var dbCon = PostgresConn.GetConn())
+                {
+                    res = EntryRepository.GetEntriesByIdTable(dbCon, 1);
+                }
+            }
+                catch (Exception e)
+            {
+
+            }
+
+            var list = JsonConvert.SerializeObject(res,
+            Formatting.None,
+            new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
+
+        return Content(list, "application/json");
         }
     }
 }

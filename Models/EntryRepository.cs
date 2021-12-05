@@ -19,9 +19,9 @@ namespace HostBooking.Models
             throw new NotImplementedException();
         }
 
-        public List<IDbEntity> GetEntriesByIdTable(NpgsqlConnection dbCon, int idTable)
+        public static List<String> GetEntriesByIdTable(NpgsqlConnection dbCon, int idTable)
         {
-            throw new NotImplementedException();
+            throw new Exception();
         }
 
         public List<IDbEntity> GetEntriesByIdUser(NpgsqlConnection dbCon, int idUser)
