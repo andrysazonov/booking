@@ -8,7 +8,8 @@ registerLocale("ru", ru);
 
 export const BookingPage = () => {
   const [date, setDate] = useState(new Date());
-  const [startTime, setStartTime] = useState();
+  const [startTime, setStartTime] = useState(date.getTime());
+  const [endTime, setEndTime] = useState(date.getTime());
   return (
     <div className={styles.bookingContainer}>
       <div className={styles.controlPanel}>
@@ -21,26 +22,28 @@ export const BookingPage = () => {
         />
         Выберите время
         <DatePicker
-          selected={date}
-          onChange={(date) => setDate(date)}
+          selected={startTime}
+          onChange={(startTime)=>{setStartTime(startTime)}}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={15}
           timeCaption="Time"
+          timeFormat="HH:mm"
           dateFormat="HH:mm"
         />
         До скольки вы хотите забронировать
         <DatePicker
-          selected={date}
-          onChange={(date) => setDate(date)}
+          selected={endTime}
+          onChange={(endTime)=>{setEndTime(endTime)}}
           showTimeSelect
           showTimeSelectOnly
           timeIntervals={15}
           timeCaption="Time"
+          timeFormat="HH:mm"
           dateFormat="HH:mm"
         />
         <button className={styles.button}>Показать свободные столы</button>
-        <button className={styles.buttonSubmit}>Заброинровать</button>
+        <button className={styles.buttonSubmit}>Забронировать</button>
       </div>
       <div className={styles.bookingSide}>
         <div className={styles.map}>
