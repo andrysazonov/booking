@@ -1,3 +1,4 @@
+using HostBooking.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,8 @@ namespace HostBooking
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IDbEntity, Entry>();
+            services.AddTransient<IDbEntity, User>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using System;
 using System.Collections.Generic;
@@ -19,14 +20,25 @@ namespace HostBooking.Models
             throw new NotImplementedException();
         }
 
-        public static List<String> GetEntriesByIdTable(NpgsqlConnection dbCon, int idTable)
+        public static List<Entry> GetEntriesByIdTable(NpgsqlConnection dbCon, int idTable)
+        // тут лучше возвращать не лист определенных энтрис а интерфейс Idbentity, но почему-то он 
+        // не хочет кастить даже учитывая добавление связи в startup
         {
-            throw new Exception();
+            using(AppContext db = new AppContext())
+            {
+                var enties = db.Entries.Where(a => a.WhichTable == idTable).ToList();
+                return enties;
+            }
         }
 
-        public List<IDbEntity> GetEntriesByIdUser(NpgsqlConnection dbCon, int idUser)
+        public static List<Entry> GetEntriesByIdUser(NpgsqlConnection dbCon, int idUser)
+        //тут соотв-но то же самое
         {
-            throw new NotImplementedException();
+            using(AppContext db = new AppContext())
+            {
+                var entries = db.Entries.Where(a => a.WhoTooked == idUser).ToList();
+                return entries;
+            }
         }
     }
 }

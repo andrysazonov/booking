@@ -18,41 +18,41 @@ namespace HostBooking.Controllers
     public class EntriesController : Controller
     {
         [HttpPut]
-        public IActionResult AddEntry() // на вход хз что
+        public IActionResult AddEntry(int idUser, DateTime recordTime, int whichTable)
         {
+            //todo
             return View();
         }
 
         [HttpDelete]
-        public IActionResult DeleteEntry() // на вход хз что
+        public IActionResult DeleteEntry(int idEntry) 
         {
+            //todo
             return View();
         }
 
         [HttpGet]
-        public IActionResult SearchTableInfo() // на вход хз что
+        public IActionResult SearchTableInfoByIdTable(int idTable) //id стола
         {
-            var res = new List<string>();
-            try
+            var res = new List<Entry>();
+            using (var dbCon = PostgresConn.GetConn())
             {
-                using (var dbCon = PostgresConn.GetConn())
-                {
-                    res = EntryRepository.GetEntriesByIdTable(dbCon, 1);
-                }
-            }
-                catch (Exception e)
-            {
-
+                res = EntryRepository.GetEntriesByIdTable(dbCon, idTable);
             }
 
-            var list = JsonConvert.SerializeObject(res,
-            Formatting.None,
-            new JsonSerializerSettings()
-            {
-                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            });
+            return Json(res);
+        }
 
-        return Content(list, "application/json");
+        [HttpGet]
+        public IActionResult SearchTableInfoByIdUser(int idUser) //id юзера
+        {
+            var res = new List<Entry>();
+            using (var dbCon = PostgresConn.GetConn())
+            {
+                res = EntryRepository.GetEntriesByIdUser(dbCon, idUser);
+            }
+
+            return Json(res);
         }
     }
 }
