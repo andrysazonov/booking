@@ -9,6 +9,11 @@ registerLocale("ru", ru);
 export const BookingPage = () => {
   const [date, setDate] = useState(new Date());
   const [startTime, setStartTime] = useState();
+  
+  const sendTime()=>{
+
+  }
+
   return (
     <div className={styles.bookingContainer}>
       <div className={styles.controlPanel}>

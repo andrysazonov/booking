@@ -1,11 +1,13 @@
 .navbar{
     position: sticky;
+    top:0;
     width:100%;
     padding:20px;
     background-color: #031163;
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    z-index: 100;
     box-shadow: 0 0.2rem 0.5rem 0 rgb(64 79 89 / 25%);
 }
 .navlink{

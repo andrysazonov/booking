@@ -18,10 +18,10 @@ export const AuthPage = () => {
 
   const loginHandler = async () => {
     try {
-      console.log("sdfds", form);
+      console.log("Form", form);
       const data = await request("/api/auth/login", "POST", { ...form });
       console.log("Data Auth", data);
-      //   auth.login(data.token, data.userId, form.login);
+        auth.login(data.token);
     } catch (error) {}
   };
 

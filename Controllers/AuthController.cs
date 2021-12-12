@@ -11,6 +11,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace HostBooking.Controllers
 {
@@ -37,13 +38,15 @@ namespace HostBooking.Controllers
                     }
                     else
                     {
+                        var claims = new List<Claim>(){new Claim(ClaimsIdentity.DefaultNameClaimType, login)};
                         var now = DateTime.UtcNow;
                         var jwt = new JwtSecurityToken(
-                        issuer: AuthOptions.ISSUER,
-                        audience: AuthOptions.AUDIENCE,
-                        notBefore: now,
-                        expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
-                        signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+                            issuer: AuthOptions.ISSUER,
+                            audience: AuthOptions.AUDIENCE,
+                            claims: claims,
+                            notBefore: now,
+                            expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
+                            signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
                         var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
                         var serializerSettings = new JsonSerializerSettings();
                         var response = new LoginResponse { Login = login, Token = encodedJwt };
