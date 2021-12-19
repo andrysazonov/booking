@@ -20,21 +20,18 @@ namespace HostBooking.Models
             throw new NotImplementedException();
         }
 
-        public static List<Entry> GetEntriesByIdTable(NpgsqlConnection dbCon, int idTable)
+        public static List<Entry> GetEntriesByIdTable(ApplicationContext context, int idTable)
         // тут лучше возвращать не лист определенных энтрис а интерфейс Idbentity, но почему-то он 
         // не хочет кастить даже учитывая добавление связи в startup
         {
-            using(AppContext db = new AppContext())
-            {
-                var enties = db.Entries.Where(a => a.WhichTable == idTable).ToList();
-                return enties;
-            }
+            var entries = context.Entries.Where(a => a.WhichTable == idTable).ToList();
+            return entries;
         }
 
         public static List<Entry> GetEntriesByIdUser(NpgsqlConnection dbCon, int idUser)
         //тут соотв-но то же самое
         {
-            using(AppContext db = new AppContext())
+            using(ApplicationContext db = new ApplicationContext())
             {
                 var entries = db.Entries.Where(a => a.WhoTooked == idUser).ToList();
                 return entries;

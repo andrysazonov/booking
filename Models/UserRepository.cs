@@ -9,20 +9,25 @@ namespace HostBooking.Models
 {
     public class UserRepository : IRepository
     {
+        // public void Insert(NpgsqlConnection dbCon, IDbEntity entity)
+        // {
+        //     var user = entity as User;
+        //     using (var con = PostgresConn.GetConn())
+        //     {
+        //         if (UserWithLoginExists(con, user.Email))
+        //             throw new Exception("User exists");
+        //     }
+        //     var command = dbCon.CreateCommand();
+        //     command.CommandType = CommandType.Text;
+        //     command.CommandText =
+        //         $"INSERT INTO \"public\".\"users\"(username, role, phone, password, email) VALUES ('{user.Username}', '{user.Role}', '{user.Phone}', '{user.Password}', '{user.Email}')";
+        //     command.ExecuteNonQuery();
+        // }
+
 
         public void Insert(NpgsqlConnection dbCon, IDbEntity entity)
         {
-            var user = entity as User;
-            using (var con = PostgresConn.GetConn())
-            {
-                if (UserWithLoginExists(con, user.Email))
-                    throw new Exception("User exists");
-            }
-            var command = dbCon.CreateCommand();
-            command.CommandType = CommandType.Text;
-            command.CommandText =
-                $"INSERT INTO \"public\".\"users\"(username, role, phone, password, email) VALUES ('{user.Username}', '{user.Role}', '{user.Phone}', '{user.Password}', '{user.Email}')";
-            command.ExecuteNonQuery();
+            throw new NotImplementedException();
         }
 
         public void Update(NpgsqlConnection dbCon, IDbEntity entity)

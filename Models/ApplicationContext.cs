@@ -16,16 +16,16 @@ using Npgsql;
 
 namespace HostBooking.Models
 {
-    public partial class AppContext : DbContext
+    public partial class ApplicationContext : DbContext
     {
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Entry> Entries { get; set; }
 
-        public AppContext()
+        public ApplicationContext()
         {
         }
  
-        public AppContext(DbContextOptions<AppContext> options)
+        public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
         }
@@ -34,7 +34,7 @@ namespace HostBooking.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=ella.db.elephantsql.com; User Id=jmluhjvi; Password=IQ2k_i9cDXCvKo4daRFpu-jez5RjSriZ; Database=jmluhjvi");
+                optionsBuilder.UseNpgsql("Server=ella.db.elephantsql.com; User Id=jmluhjvi; Password=IQ2k_i9cDXCvKo4daRFpu-jez5RjSriZ; Database=jmluhjvi");
             }
         }
 
