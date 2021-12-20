@@ -25,14 +25,14 @@ namespace HostBooking.Controllers
         }
         
         [HttpPut]
-        public IActionResult AddEntry(int idUser, DateTime recordTime, int whichTable)
+        public IActionResult AddEntry(int idUser, DateTime recordTime, int whichTable) //alexei
         {
             //todo
             throw new NotImplementedException();
         }
 
         [HttpDelete]
-        public IActionResult DeleteEntry(int idEntry) 
+        public IActionResult DeleteEntry(int idEntry) //alexei
         {
             //todo
             throw new NotImplementedException();
@@ -51,9 +51,19 @@ namespace HostBooking.Controllers
         }
 
         [HttpGet]
-        public IActionResult SearchTableInfoByIdUser(int idUser) //id юзера
+        public IActionResult GetEntriesForUser(int idUser) //artyom
         {
-            throw new NotImplementedException();
+            //todo
+        }
+
+        public IActionResult GetFreeTableByDate(DateTime date) //alexei
+        {
+            //Todo return Dictionary<IdTable, {1, 2, 3}>; 1 - cвободно полностью, 2 - есть свободные, 3 - занято
+        }
+        
+        public IActionResult SearchWhoTookThisTimeOnThisTable() //artyom
+        {
+            //Todo?
         }
     }
 }
