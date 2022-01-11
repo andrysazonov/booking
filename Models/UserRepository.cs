@@ -1,15 +1,11 @@
-﻿using Npgsql;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+using Npgsql;
 
 namespace HostBooking.Models
 {
     public class UserRepository : IRepository
     {
-
         public void Insert(NpgsqlConnection dbCon, IDbEntity entity)
         {
             var user = entity as User;
@@ -18,6 +14,7 @@ namespace HostBooking.Models
                 if (UserWithLoginExists(con, user.Email))
                     throw new Exception("User exists");
             }
+
             var command = dbCon.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText =

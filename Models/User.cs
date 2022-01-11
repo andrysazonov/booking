@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HostBooking.Models
 {
@@ -11,8 +8,8 @@ namespace HostBooking.Models
 
         public readonly int? Id;
 
-        [NonSerialized]
-        public readonly string Password;
+        [NonSerialized] public readonly string Password;
+
         public readonly string Phone;
         public readonly string Role;
         public readonly string Username;
