@@ -25,14 +25,17 @@ const testHandler= async ()=>{
   return (
     <div className={styles.bookingContainer}>
       <div className={styles.controlPanel}>
-        Выберите дату
+        <div>
+          Выберите дату
         <DatePicker
           dateFormat="dd.MM.yy"
           locale={"ru"}
           selected={date}
           onChange={(date) => setDate(date)}
         />
-        Выберите время
+        </div>
+        <div>
+          Выберите время
         <DatePicker
           selected={startTime}
           onChange={(startTime)=>{setStartTime(startTime)}}
@@ -43,6 +46,8 @@ const testHandler= async ()=>{
           timeFormat="HH:mm"
           dateFormat="HH:mm"
         />
+        </div>
+        <div>
         До скольки вы хотите забронировать
         <DatePicker
           selected={endTime}
@@ -54,8 +59,10 @@ const testHandler= async ()=>{
           timeFormat="HH:mm"
           dateFormat="HH:mm"
         />
-        <button className={styles.button}>Показать свободные столы</button>
-        <button className={styles.buttonSubmit} onClick={testHandler}>Забронировать</button>
+        </div>
+       
+         <button className={styles.button}>Показать свободные столы</button>
+       {/* <button className={styles.buttonSubmit} onClick={testHandler}>Забронировать</button> */}
       </div>
       <div className={styles.bookingSide}>
         <div className={styles.map}>

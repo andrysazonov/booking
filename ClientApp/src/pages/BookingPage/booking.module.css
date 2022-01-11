@@ -1,28 +1,33 @@
 .bookingContainer {
   display: flex;
-  height: calc(100vh - 90px);
+  flex-direction: column;
+  /* height: calc(100vh - 90px); */
 }
 .controlPanel {
-  width: 40%;
+  /* width: 40%;
   height: 100%;
   box-shadow: 0 0.2rem 0.5rem 0 rgb(64 79 89 / 25%);
-  padding: 1rem;
+  padding: 1rem;*/
   display: flex;
   align-items: center;
-  flex-direction: column;
+  padding:10px;
+  background: rgb(241, 168, 178);
+}
+.setting{
+
 }
 .bookingSide {
-  width: 60%;
-  height: 100%;
+  /* width: 60%; */
+  /* height: 100%; */
 }
 .map {
 }
 .button {
   outline: none;
-  padding: 20px;
+padding: 15px;
+  border-radius: 3px;
   color: white;
   margin: 20px;
-  width: 100%;
   background-color: darkmagenta;
 }
 .buttonSubmit {

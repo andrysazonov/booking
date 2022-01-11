@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useHttp } from "../../hooks/http.hook";
 import styles from "./auth.module.css";
+import {useHistory} from "react-router-dom"
 
 export const AuthPage = () => {
   const auth = useContext(AuthContext);
+  const history=useHistory()
 
   const { loading, error, clearError, request } = useHttp();
   const [form, setForm] = useState({
@@ -20,6 +22,7 @@ export const AuthPage = () => {
     try {
       const data = await request("/api/auth/login", "POST", { ...form });
         auth.login(data.token);
+        history.push("/booking");
     } catch (error) {}
   };
 

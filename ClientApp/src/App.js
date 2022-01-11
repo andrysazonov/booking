@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { useRoutes } from "./routes";
 import {useAuth} from "./hooks/auth.hook"
@@ -14,8 +14,8 @@ export const App = () => {
     <AuthContext.Provider value={{
       token, login, logout, isAuthenticated
     }} >
-      <Navbar />
       <Router>
+      <Navbar />
         {routes}
       </Router>
       </AuthContext.Provider>

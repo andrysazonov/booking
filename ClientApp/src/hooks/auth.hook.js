@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from 'react'
 
 const storageName = 'userData'
 export const useAuth = () => {
-    const [token, setToken] = useState(null)
+    const [token, setToken] = useState(localStorage.getItem(storageName))
     // const [userId, setUserId] = useState(null)
     // const [userName,setUserName]=useState(null)
 

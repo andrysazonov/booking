@@ -1,8 +1,19 @@
 .map {
   padding: 50px;
+  border:1px solid red;
+  box-sizing: border-box;
+  margin:20px;
 }
 .table {
-  padding: 30px;
-  background: coral;
+  background: rgb(107, 82, 153);
   margin: 5px;
+  width:30px;
+  height:20px;
+  display: flex;
+  color:white;
+  padding:10px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
+

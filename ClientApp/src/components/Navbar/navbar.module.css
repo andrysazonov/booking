@@ -26,3 +26,10 @@ outline: none;
 border:none;
 cursor: pointer;
 }
+.flex{
+    display: flex;
+    align-items: center;
+}
+.link{
+    margin-left: 20px;
+}

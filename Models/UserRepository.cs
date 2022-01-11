@@ -41,7 +41,7 @@ namespace HostBooking.Models
             var command = dbCon.CreateCommand();
             command.CommandType = CommandType.Text;
             command.CommandText =
-                $"select * from \"public\".\"users\" where login='{login}' and password='{password}'";
+                $"select * from \"public\".\"users\" where \"Login\"='{login}' and \"Password\"='{password}'";
             var dataReader = command.ExecuteReader();
             if (!dataReader.HasRows)
                 return false;

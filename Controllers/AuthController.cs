@@ -24,13 +24,11 @@ namespace HostBooking.Controllers
         {
             var login = data.Login;
             var password = data.Password;
-
             try
             {
                 using (var dbCon = PostgresConn.GetConn())
                 {
                     var isAuth = UserRepository.IsAuth(login, password, dbCon);
-
                     if (!isAuth )
                     {
                         Response.StatusCode = 400;

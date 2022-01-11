@@ -6,7 +6,7 @@ export const Map = () => {
     for (let i = 0; i <= count; i++) {
       template.push(
         <div key={i} className={styles.table}>
-          Стол {i + 1}
+          {i + 1}
         </div>
       );
     }
