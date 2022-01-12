@@ -1,3 +1,4 @@
+using HostBooking.Models.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,6 +39,9 @@ namespace HostBooking
                     };
                 });
             services.AddControllersWithViews();
+            services.AddTransient<UserRepository>();
+            services.AddTransient<TableRepository>();
+            services.AddTransient<ReservationRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

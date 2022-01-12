@@ -1,8 +1,8 @@
 ﻿using Npgsql;
 
-namespace HostBooking
+namespace HostBooking.Services
 {
-    public static class PostgresConn
+    public static class PostgresConnector
     {
         public static NpgsqlConnection GetConn()
         {

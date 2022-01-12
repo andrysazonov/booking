@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace PersonalPortal.Controllers
+namespace HostBooking.Controllers
 {
     public class HomeController : Controller
     {

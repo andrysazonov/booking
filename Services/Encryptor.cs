@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace HostBooking
+namespace HostBooking.Services
 {
     public class Encryptor
     {

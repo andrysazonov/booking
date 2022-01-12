@@ -1,0 +1,3 @@
+namespace HostBooking.Models
+{
+}

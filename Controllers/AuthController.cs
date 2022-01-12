@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using HostBooking.Models;
+using HostBooking.Models.Repositories;
 using HostBooking.Models.RequestModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,36 +16,40 @@ namespace HostBooking.Controllers
     [Route("api/[controller]")]
     public class AuthController : Controller
     {
+        private readonly UserRepository userRepository;
+
+        public AuthController(UserRepository userRepository)
+        {
+            this.userRepository = userRepository;
+        }
+
         [Route("login")]
         [HttpPost]
         public async void LoginAsync([FromBody] LoginRequest data)
         {
+            Console.WriteLine(data.Login);
             var login = data.Login;
             var password = data.Password;
             try
             {
-                using (var dbCon = PostgresConn.GetConn())
+                if (!userRepository.IsAuth(login, password))
                 {
-                    var isAuth = UserRepository.IsAuth(login, password, dbCon);
-                    if (!isAuth)
-                    {
-                        Response.StatusCode = 400;
-                        await Response.WriteAsync("Incorrect login or password");
-                    }
-                    else
-                    {
-                        var encodedJwt = GetEncodedJwt(login);
-                        var serializerSettings = new JsonSerializerSettings();
-                        var loginResponse = new LoginResponse {Login = login, Token = encodedJwt};
-                        serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                        var jsonLoginResponse = JsonConvert.SerializeObject(loginResponse, serializerSettings);
-                        await Response.Body.WriteAsync(Encoding.UTF8.GetBytes(jsonLoginResponse));
-                    }
+                    Response.StatusCode = 400;
+                    await Response.WriteAsync("Incorrect login or password");
+                }
+                else
+                {
+                    var encodedJwt = GetEncodedJwt(login);
+                    var serializerSettings = new JsonSerializerSettings();
+                    var loginResponse = new LoginResponse {Login = login, Token = encodedJwt};
+                    serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    var jsonLoginResponse = JsonConvert.SerializeObject(loginResponse, serializerSettings);
+                    await Response.Body.WriteAsync(Encoding.UTF8.GetBytes(jsonLoginResponse));
                 }
             }
             catch (Exception e)
             {
-                Response.StatusCode = 400;
+                Response.StatusCode = 500;
                 await Response.WriteAsync(e.Message);
             }
         }
@@ -66,6 +70,4 @@ namespace HostBooking.Controllers
             return encodedJwt;
         }
     }
-
-    
 }
