@@ -3,6 +3,8 @@
   border:1px solid red;
   box-sizing: border-box;
   margin:20px;
+  display: flex;
+  justify-content: space-around;
 }
 .table {
   background: rgb(107, 82, 153);

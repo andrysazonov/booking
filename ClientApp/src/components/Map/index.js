@@ -14,7 +14,7 @@ export const Map = () => {
   };
   return (
     <div className={styles.map}>
-      <div>{getTable(5)}</div>
+      {getTable(9)}
     </div>
   );
 };
